@@ -13,25 +13,25 @@ namespace SeleniumInitialize_Tests
             _builder = new SeleniumBuilder();
         }
 
-        [Test(Description = "Проверка корректной инициализации экземпляра IWebDriver")]
+        [Test(Description = "РџСЂРѕРІРµСЂРєР° РєРѕСЂСЂРµРєС‚РЅРѕР№ РёРЅРёС†РёР°Р»РёР·Р°С†РёРё СЌРєР·РµРјРїР»СЏСЂР° IWebDriver")]
         public void BuildTest1()
         {
             IWebDriver driver = _builder.Build();
             Assert.IsNotNull(driver);
         }
 
-        [Test(Description = "Проверка очистки ресурсов IWebDriver")]
+        [Test(Description = "РџСЂРѕРІРµСЂРєР° РѕС‡РёСЃС‚РєРё СЂРµСЃСѓСЂСЃРѕРІ IWebDriver")]
         public void DisposeTest1()
         {
             IWebDriver driver = _builder.Build();
             Assert.IsFalse(_builder.IsDisposed);
             _builder.Dispose();
             Assert.IsTrue(_builder.IsDisposed);
-            var processes = Process.GetProcesses("chromedriver.exe");
+            var processes = Process.GetProcessesByName("chromedriver.exe");
             Assert.IsFalse(processes.Any());
         }
 
-        [Test(Description = "Проверка изменения таймаута")]
+        [Test(Description = "РџСЂРѕРІРµСЂРєР° РёР·РјРµРЅРµРЅРёСЏ С‚Р°Р№РјР°СѓС‚Р°")]
         public void TimeoutTest()
         {
             TimeSpan timeout = TimeSpan.FromSeconds(20);
